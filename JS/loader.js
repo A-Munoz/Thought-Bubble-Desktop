@@ -17,8 +17,8 @@ var app = app || {};
 
 window.onload = function(){
 	console.log("window.onload called");
-    app.sound.init();
-    app.main.sound = app.sound;
+   // app.sound.init();
+   // app.main.sound = app.sound;
     app.main.init();
     document.querySelector("#toolSelection").onchange = function(e){
 				switch(e.target.value){
@@ -47,12 +47,13 @@ window.onload = function(){
         };
     document.querySelector("#soundBox").onchange = function(e){
        if(e.target.checked){
-           app.sound.playBGAudio();
-           app.main.music = true;
+           //app.sound.playBGAudio();
+           //app.sound.playBGAudio();
+         //  app.main.music = true;
        }
       else{
-          app.sound.stopBGAudio();
-          app.main.music = false;
+          //app.sound.stopBGAudio();
+        //  app.main.music = false;
       }
     };
     

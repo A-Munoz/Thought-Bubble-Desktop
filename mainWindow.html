@@ -3,55 +3,24 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Mind Map - Project 2</title>
-	<style>
-        @import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway');
-        * {
-            margin: 0%;
-        }
-        body{
-            width: 100%;
-            height: 100%;
-            font-family: 'Raleway', sans-serif;
-            font-size: 12pt;
-            background-image: url("media/bg.png");
-            background: cover;
-        }
-        section{
-            float: left;
-            padding: 10px;
-            width: 200px;
-            height: 100%;
-        }
-        canvas{ 
-           float: right;
-           position: fixed;
-        }  
-        h1{
-            font-size: 18pt;
-            color: #1C6AA3;
-        }
-        h2{
-            font-size: 14pt
-        }
-        div span{
-            display: block;
-            padding-bottom: 20px;
-        }     
-        #controls{
-            padding: 20px 0px 20px 0px;
-        }
-        #directions{
-             padding: 20px 0px 20px 0px;
-        }
-        #audio{display:none}
-    </style>
+	<link rel="stylesheet" href="css/mainCSS.css">
 </head>
 <body>
     <section>
-    <h1>Thought Bubble</h1>
+
         <div id = "controls">
+            <button><img src="media/addIcon.svg"></button>
+            <button><img src="media/minusIcon.svg"></button>
+            <button><img src="media/pointerIcon.svg"></button>
+            <button><img src="media/colorIcon.svg"></button>
+            <button><img src="media/circleicon.svg"></button>
+            <button><img src="media/square.svg"></button>
+            <button><img src="media/fontIcon.svg"></button>
+            <button><img src="media/lineIcon.svg"></button>
+            <button><img src="media/options.svg"></button>
+
         
-        <label>Tool:</label>
+       <!-- <label>Tool:</label>
             <span>
             <select id="toolSelection">
                 <option value="pointer">Pointer</option>
@@ -100,10 +69,10 @@
                       <p>Line Wight: enter a number and it will change the weight of the stroke</p>
                     
                 </span>
-            </div>
+            </div>-->
         </div>
     </section>
-	<canvas></canvas>
+	<canvas id="mainCanvas"></canvas>
      <script src='JS/utilities.js'></script>
     <script src='JS/loader.js'></script>
 	<script src='JS/main.js'></script>

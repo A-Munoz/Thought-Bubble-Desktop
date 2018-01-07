@@ -26,7 +26,7 @@ app.main = {
     music: true,
    	lastTime: 0, // used by calculateDeltaTime() 
     //debug: true,   
-    sound:undefined,
+  //  sound:undefined,
     bColor:'#404040',
     dt: undefined,
     bg: undefined,
@@ -65,19 +65,19 @@ app.main = {
         //Canvas Setup & Properties Setting
 		this.canvas = document.querySelector('canvas');
 		this.ctx = this.canvas.getContext('2d');  
-        this.WIDTH = window.innerWidth-200;
+        this.WIDTH = window.innerWidth;
         this.HEIGHT= window.innerHeight;
         this.canvas.width = this.WIDTH;
         this.canvas.height = this.HEIGHT;
         this.toolState = this.TOOL_STATE.POINTER;
         this.bg = new Image();
-        this.bg.src = 'media/footer_lodyas.png';
+        this.bg.src = 'media/bg.png';
         
         //initalization
          this.canvas.onmousedown=this.doMouseDown.bind(this);
 
         //Load
-        this.sound.playBGAudio();
+       // this.sound.playBGAudio();
         this.update();
         
     },
@@ -122,7 +122,7 @@ app.main = {
     doMouseDown: function(e){
         var mouse = getMouse(e);
         if(this.music){
-        this.sound.playEffect();
+        //this.sound.playEffect();
         }
 
         if(this.toolState == this.TOOL_STATE.POINTER){

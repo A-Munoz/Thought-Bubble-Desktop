@@ -10,12 +10,11 @@ let mainWindow = null
 app.on('ready', function(){
     mainWindow = new BrowserWindow({
         width: 1200,
-        height: 725,
+        height: 800,
         resizable: true,
-        transparent: true,
-    
+        backgroundColor: '#21363d',
         
-    
+        
     });
        
     mainWindow.loadURL(url.format({
