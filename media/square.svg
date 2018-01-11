@@ -1,1 +1,8 @@
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><defs><style>.cls-1{stroke:#000;stroke-miterlimit:10;}</style></defs><title>Artboard 7</title><path class="cls-1" d="M35.5,39.5v231h231V39.5Zm114,219a101,101,0,1,1,101-101A101,101,0,0,1,149.5,258.5Z"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 x="0px" y="0px" viewBox="0 0 300 300" xml:space="preserve">
+<title>Artboard 7</title>
+<path fill="#FFFFFF" d="M35.5,39.5v231h231v-231H35.5z M149.5,258.5c-55.8,0-101-45.2-101-101s45.2-101,101-101s101,45.2,101,101
+	S205.3,258.5,149.5,258.5z"/>
+</svg>

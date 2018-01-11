@@ -6,19 +6,26 @@
 	<link rel="stylesheet" href="css/mainCSS.css">
 </head>
 <body>
+    <header>
+        <div id="icon">
+            <img>
+        </div>
+        <div id ="windowControls">
+            <button id="minWindow">Min</button>
+            <button id="maxWindow">max</button>
+            <button id="exit">EXIT</button>
+        </div>    
+    </header>
     <section>
-
         <div id = "controls">
-            <button><img src="media/addIcon.svg"></button>
-            <button><img src="media/minusIcon.svg"></button>
-            <button><img src="media/pointerIcon.svg"></button>
-            <button><img src="media/colorIcon.svg"></button>
-            <button><img src="media/circleicon.svg"></button>
-            <button><img src="media/square.svg"></button>
-            <button><img src="media/fontIcon.svg"></button>
-            <button><img src="media/lineIcon.svg"></button>
-            <button><img src="media/options.svg"></button>
-
+            <button id="plusMin" ><img src="media/addIcon.svg"></button>
+            <button id ="pointer" ><img src="media/pointerIcon.svg"></button>
+            <button id="color" ><img src="media/colorIcon.svg"></button>
+            <button id="shape" ><img src="media/circleicon.svg"></button>
+            <button id="font" ><img src="media/fontIcon.svg"></button>
+            <button id="line" ><img src="media/lineIcon.svg"></button>
+            <button id="options" ><img src="media/options.svg"></button>
+</div>
         
        <!-- <label>Tool:</label>
             <span>
@@ -70,7 +77,6 @@
                     
                 </span>
             </div>-->
-        </div>
     </section>
 	<canvas id="mainCanvas"></canvas>
      <script src='JS/utilities.js'></script>

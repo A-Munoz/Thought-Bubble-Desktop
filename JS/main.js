@@ -1,40 +1,43 @@
  /* 
 ////////////////////////////////////////////
-//Project 2 - Mind Map program(Thought Bubble)
+//Thought Bubble (Mind Mapping)
 //Created: 10/22/2016 - Alexia Munoz
-//Last Edit: 11/12/2016
-//Due Dates: 11/11/2016
-//      Prototype 1: 10/26/2016
-//      Prototype 2: 10/31/2016
-//      Final Version: 11/12/2016
+//Last Edit: 1/11/2018
 ////////////////////////////////////////////
  */
 //Main JS - Main controller of app
 
+///////////////////App Set up and Properties///////////////////////
 "use strict";
 
 var app = app || {};
 
 app.main = {
-    //Properties
+
+//PROPERTIES//
+    
+    //Canvas Properties
     mOnCanvas: 'true',
     WIDTH: undefined,
     HEIGHT: undefined,
     canvas: undefined,
     toolState: undefined,
     ctx: undefined,
+    
+    
     music: true,
    	lastTime: 0, // used by calculateDeltaTime() 
     //debug: true,   
   //  sound:undefined,
-    bColor:'#404040',
+    bColor:'#656D78',
     dt: undefined,
     bg: undefined,
+    color: ["#DA4453", "#FFCE54", "#4FC1E9", "#EC87C0", "#48CFAD", "#A0D468", "#AC92EC" ], //Array of avaliable colors
     BUBBLE:Object.seal({
         radius: 60,
         increaseRate: 60,
-        fColor: '#404040',
-        sColor: '#006699',
+        fColor: '#ED5565',
+        sColor: '#ED5565',
         shape: 'circle', // rect, circle, trangle
         margin: 10,
         sWeight: 4,
@@ -55,7 +58,6 @@ app.main = {
         DELETINGBUBBLE: 3,
     }),    
     bubbles: [], //Array of Mind Map Bubbles
-    color: ["#006699", "#00ff99", "#3399ff", "#660066", "#ffff66", "#ffcc66", "#ff9966" ], //Array of avaliable colors
     animationID: 0,
     
     //Functions    
@@ -69,9 +71,9 @@ app.main = {
         this.HEIGHT= window.innerHeight;
         this.canvas.width = this.WIDTH;
         this.canvas.height = this.HEIGHT;
-        this.toolState = this.TOOL_STATE.POINTER;
-        this.bg = new Image();
-        this.bg.src = 'media/bg.png';
+        this.toolState = this.TOOL_STATE.NEWBUBBLE;
+       // this.bg = this.bColor;
+       // this.bg.src = 'media/bg.png';
         
         //initalization
          this.canvas.onmousedown=this.doMouseDown.bind(this);
@@ -99,9 +101,9 @@ app.main = {
         
         // 1) BACKGROUND
             //incase of image load error
-            this.ctx.fillStyle = this.bColor;
+             this.ctx.fillStyle = this.bColor;
             this.ctx.fillRect(0,0,this.WIDTH,this.HEIGHT);
-            this.ctx.drawImage(this.bg,0,0,this.WIDTH,this.HEIGHT); //Display image background
+          //  this.ctx.fillRect(this.bg,0,0,this.WIDTH,this.HEIGHT); //Display image background
         
         // 3)BUBBLES!
         for(var i = 0; i < this.bubbles.length; i++){
@@ -333,12 +335,16 @@ app.main = {
         
         ctx.arc(oBubble.x,oBubble.y,oBubble.radius,0,Math.PI*2,false);
         ctx.closePath();
-
+        
+        ctx.shadowBlur = 5;
         if(oBubble.selected){
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = "gray";
+        ctx.shadowColor = "#AAB2BD";
         }
-        ctx.fillStyle = this.bColor;
+        else {
+            ctx.shadowOffsetY = 5;
+            ctx.shadowColor ="#434A54"
+        }
+        ctx.fillStyle = oBubble.color;
         ctx.strokeStyle = oBubble.color;
         ctx.lineWidth = oBubble.lineWeight;
         ctx.stroke();
@@ -347,11 +353,16 @@ app.main = {
     },
     rectBubble: function(oBubble,ctx){
         ctx.save();
-         if(oBubble.selected){
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = "gray";
+        
+        ctx.shadowBlur = 5;
+        if(oBubble.selected){
+        ctx.shadowColor = "#AAB2BD";
         }
-        ctx.fillStyle = this.bColor;
+        else {
+            ctx.shadowOffsetY = 10;
+            ctx.shadowColor ="#434A54"
+        }
+        ctx.fillStyle = oBubble.color;
         ctx.strokeStyle = oBubble.color;
         ctx.lineWidth = oBubble.lineWeight;
         ctx.fillRect(oBubble.x-oBubble.radius,oBubble.y-oBubble.radius,(oBubble.radius*2),(oBubble.radius*2))
@@ -359,24 +370,7 @@ app.main = {
         ctx.stroke();
         ctx.restore();      
     },  
-    trangleBubble: function(oBubble,ctx){
-        ctx.save();
-        ctx.beginPath();
-         if(oBubble.selected){
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = "gray";
-        }
-        ctx.fillStyle = this.bColor;
-        ctx.strokeStyle = oBubble.color;
-        ctx.lineWidth = oBubble.lineWeight;
-        ctx.moveTo(oBubble.x,(oBubble.y - oBubble.radius));
-        ctx.lineTo((oBubble.x - oBubble.radius),(oBubble.y + oBubble.radius));
-        ctx.lineTo((oBubble.x +oBubble.radius),(oBubble.y + oBubble.radius));
-        ctx.closePath();
-        ctx.stroke();
-        ctx.fill();
-       ctx.restore();
-    },  
+
     drawLine: function(oLine,ctx){
         ctx.save();
         ctx.beginPath();
@@ -384,6 +378,10 @@ app.main = {
         ctx.moveTo(oLine.pX,oLine.pY);
         ctx.lineTo(oLine.x,oLine.y);
         ctx.closePath();
+        ctx.shadowBlur = 10;
+        ctx.shadowOffsetY = 2;
+        ctx.shadowColor ="#434A54"
+        ctx.lineWidth = 2;
         ctx.stroke();
         ctx.restore();
     },

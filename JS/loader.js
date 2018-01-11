@@ -36,7 +36,8 @@ window.onload = function(){
                      break;
              }
 			};
-    document.querySelector("#colorSelection").onchange = function(e){
+    
+    document.querySelector("#pointer").onchange = function(e){
              app.main.BUBBLE.sColor = app.main.color[e.target.value];
              };
     document.querySelector("#shapeSelection").onchange = function(e){

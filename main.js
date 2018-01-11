@@ -13,6 +13,7 @@ app.on('ready', function(){
         height: 800,
         resizable: true,
         backgroundColor: '#21363d',
+        frame: false,
         
         
     });
@@ -22,5 +23,18 @@ app.on('ready', function(){
         protocol: 'file',
         slashes: true
     }));
+    
+    document.querySelector("#minWindow").click = function(e){
+
+             mainWindow.minimize();
+             };
+     document.querySelector("#maxWindow").onchange = function(e){
+            // var window = BrowserWindow.getFocusedWindow();
+             mainWindow.maximize();
+             };
+     document.querySelector("#exit").onchange = function(e){
+             //var window = BrowserWindow.getFocusedWindow();
+             mainWindow.close();
+             };
     
 })
