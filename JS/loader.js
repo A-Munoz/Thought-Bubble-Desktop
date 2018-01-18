@@ -11,42 +11,60 @@
 //Loader JS - Loads app and appropirate javascript files
 "use strict";
 
-
 var app = app || {};
+const {remote} = require('electron')
+document.getElementById('exit').addEventListener('click', function(e){
+    var window = remote.getCurrentWindow()
+    window.close();
+})
+document.getElementById('min').addEventListener('click', function(e){
+    var window = remote.getCurrentWindow()
+    window.minimize();
+})
+document.getElementById('max').addEventListener('click', function(e){
+    var window = remote.getCurrentWindow()
+    
+    if(window.isMaximized()) {
+        window.unmaximize();
+         app.main.resizeCanvas();
+    } 
+    else{
+    window.maximize();
+         app.main.resizeCanvas();
+    }
+    
+
+})
+
+
 
 
 window.onload = function(){
+ 
+    
+    
 	console.log("window.onload called");
    // app.sound.init();
    // app.main.sound = app.sound;
     app.main.init();
-    document.querySelector("#toolSelection").onchange = function(e){
-				switch(e.target.value){
-                 case 'pointer':
-                     app.main.toolState =  app.main.TOOL_STATE.POINTER;
-                     break;
-                 case 'add':
-                     app.main.toolState = app.main.TOOL_STATE.NEWBUBBLE;
-                     break;
-                case 'delete':
-                     app.main.toolState = app.main.TOOL_STATE.DELETINGBUBBLE;
-                     break;
-                 default:
-                     app.main.toolState = app.main.TOOL_STATE.POINTER;
-                     break;
-             }
-			};
     
-    document.querySelector("#pointer").onchange = function(e){
-             app.main.BUBBLE.sColor = app.main.color[e.target.value];
-             };
-    document.querySelector("#shapeSelection").onchange = function(e){
-             app.main.BUBBLE.shape = e.target.value;
-             }; 
-    document.querySelector("#lineWeight").onchange = function(e){
-            app.main.BUBBLE.sWeight = e.target.value;
-        };
-    document.querySelector("#soundBox").onchange = function(e){
+//CANVAS CONTROLLS
+document.getElementById('pointer').addEventListener('click', function(e){
+   app.main.toolState = app.main.TOOL_STATE.POINTER;
+})
+document.getElementById('plusMin').addEventListener('click', function(e){
+    app.main.toolState = app.main.TOOL_STATE.NEWBUBBLE;
+})
+document.getElementById('color').addEventListener('click', function(e){
+    app.main.toolState = app.main.TOOL_STATE.DELETINGBUBBLE;
+})
+document.getElementById('shape').addEventListener('click', function(e){
+   
+})
+document.getElementById('font').addEventListener('click', function(e){
+   
+})
+   /* document.getElementById("soundBox").onclick = function(e){
        if(e.target.checked){
            //app.sound.playBGAudio();
            //app.sound.playBGAudio();
@@ -57,6 +75,6 @@ window.onload = function(){
         //  app.main.music = false;
       }
     };
-    
+    */
   // window.addEventListener('resize',app.main.canvasSize(app.main.canvas), false);
 };

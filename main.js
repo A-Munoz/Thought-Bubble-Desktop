@@ -14,8 +14,7 @@ app.on('ready', function(){
         resizable: true,
         backgroundColor: '#21363d',
         frame: false,
-        
-        
+
     });
        
     mainWindow.loadURL(url.format({
@@ -24,17 +23,9 @@ app.on('ready', function(){
         slashes: true
     }));
     
-    document.querySelector("#minWindow").click = function(e){
+    mainWindow.on('closed', function() {
+        mainWindow = null;
+    });
 
-             mainWindow.minimize();
-             };
-     document.querySelector("#maxWindow").onchange = function(e){
-            // var window = BrowserWindow.getFocusedWindow();
-             mainWindow.maximize();
-             };
-     document.querySelector("#exit").onchange = function(e){
-             //var window = BrowserWindow.getFocusedWindow();
-             mainWindow.close();
-             };
     
-})
+});

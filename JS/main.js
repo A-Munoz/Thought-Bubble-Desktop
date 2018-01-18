@@ -23,7 +23,7 @@ app.main = {
     canvas: undefined,
     toolState: undefined,
     ctx: undefined,
-    
+    scale: 1,
     
     music: true,
    	lastTime: 0, // used by calculateDeltaTime() 
@@ -67,10 +67,7 @@ app.main = {
         //Canvas Setup & Properties Setting
 		this.canvas = document.querySelector('canvas');
 		this.ctx = this.canvas.getContext('2d');  
-        this.WIDTH = window.innerWidth;
-        this.HEIGHT= window.innerHeight;
-        this.canvas.width = this.WIDTH;
-        this.canvas.height = this.HEIGHT;
+        this.resizeCanvas();
         this.toolState = this.TOOL_STATE.NEWBUBBLE;
        // this.bg = this.bColor;
        // this.bg.src = 'media/bg.png';
@@ -101,7 +98,10 @@ app.main = {
         
         // 1) BACKGROUND
             //incase of image load error
+            this.resizeCanvas();
              this.ctx.fillStyle = this.bColor;
+           //this.ctx.scale(this.scale,this.scale)
+           //this.ctx.scale(this.scale,this.scale)
             this.ctx.fillRect(0,0,this.WIDTH,this.HEIGHT);
           //  this.ctx.fillRect(this.bg,0,0,this.WIDTH,this.HEIGHT); //Display image background
         
@@ -120,13 +120,22 @@ app.main = {
         }
         
     },  
+    
+    resizeCanvas: function(){
+        this.canvas.height = window.innerHeight;
+        this.canvas.width = window.innerWidth;
+        this.WIDTH = window.innerWidth;
+        this.HEIGHT = this.canvas.clientHeight;
+        console.log(this.canvas.clientHeight);
+    },
 
     doMouseDown: function(e){
         var mouse = getMouse(e);
         if(this.music){
         //this.sound.playEffect();
         }
-
+         this.scale = this.scale - .1;
+            console.log(this.scale)
         if(this.toolState == this.TOOL_STATE.POINTER){
             this.bubbleClickedCheck(mouse);
         }
@@ -296,7 +305,6 @@ app.main = {
 ///////////////////////////////////////////////////////////////////////////
    ///Bubble Display Functions/////////////////////////////////////////   
    drawBubble: function(oBubble){
-        
         switch(oBubble.shape){
             case 'rect':
                this.rectBubble(oBubble,this.ctx);
@@ -320,6 +328,7 @@ app.main = {
     },  
     textDisplay:function(oBubble,ctx){
         ctx.save();
+        ctx.scale(this.scale,this.scale)
         ctx.font= "12pt Arial";
         ctx.fillStyle = "white";
         ctx.textAlign ='center';
@@ -329,8 +338,8 @@ app.main = {
         ctx.restore();
     },
     circleBubble: function(oBubble,ctx){
-
         ctx.save();
+        ctx.scale(this.scale,this.scale)
         ctx.beginPath();
         
         ctx.arc(oBubble.x,oBubble.y,oBubble.radius,0,Math.PI*2,false);
@@ -353,7 +362,7 @@ app.main = {
     },
     rectBubble: function(oBubble,ctx){
         ctx.save();
-        
+        ctx.scale(this.scale,this.scale)
         ctx.shadowBlur = 5;
         if(oBubble.selected){
         ctx.shadowColor = "#AAB2BD";
@@ -373,6 +382,7 @@ app.main = {
 
     drawLine: function(oLine,ctx){
         ctx.save();
+        ctx.scale(this.scale,this.scale)
         ctx.beginPath();
         ctx.strokeStyle = oLine.color;
         ctx.moveTo(oLine.pX,oLine.pY);
