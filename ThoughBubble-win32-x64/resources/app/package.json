@@ -1,0 +1,30 @@
+{
+  "name": "thoughtbubble",
+  "version": "0.1.1",
+  "description": "mind mapping program desktop version",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron . main.js",
+    "package": "",
+    "build": "electron-packager . ThoughBubble"
+  },
+  "files": [
+    "*.js",
+    "build",
+    "node_modules"
+  ],
+  "author": "Alexia M Munoz",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^1.8.2",
+    "electron-packager": "^10.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/A-Munoz/Thought-Bubble-Desktop.git"
+  },
+  "bugs": {
+    "url": "https://github.com/A-Munoz/Thought-Bubble-Desktop/issues"
+  },
+  "homepage": "https://github.com/A-Munoz/Thought-Bubble-Desktop#readme"
+}
